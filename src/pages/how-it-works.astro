@@ -1,0 +1,134 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ThreeDBackground from '../components/ThreeDBackground.svelte';
+---
+
+<Layout 
+	title="The Engineering of Precision | How Real Online Ruler Works"
+	description="Explore the technical engine behind onlineruler.com. Learn about PPI sensing, physical calibration anchors, and SVG-based measurement accuracy.">
+    <ThreeDBackground client:only="svelte" />
+	<main class="relative min-h-screen bg-canvas dark:bg-canvas text-ink dark:text-ink selection:bg-ink selection:text-canvas overflow-hidden">
+		
+        <!-- Hero Section -->
+        <header class="max-w-7xl mx-auto px-6 pt-32 pb-24 relative z-10">
+			<a href="/" class="reveal-card inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.3em] text-mute hover:text-ink transition-all mb-16">
+				<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+				Back to Workspace
+			</a>
+
+			<h1 class="reveal-card text-pro-display mb-12">
+                Engineering <br/> <span class="text-mute font-medium italic">Certainty.</span>
+            </h1>
+            
+            <p class="reveal-card text-pro-body mb-24" style="transition-delay: 100ms;">
+                Digital screens are built with thousands of pixels, but their physical size varies wildly. We use advanced hardware sensing and physical anchors to turn your display into a professional measurement instrument.
+            </p>
+        </header>
+
+        <!-- The Three Pillars of Accuracy -->
+        <section class="max-w-7xl mx-auto px-6 pb-48 relative z-10">
+            <div class="grid grid-cols-1 gap-12">
+                
+                <!-- Pillar 01: Hardware Intelligence -->
+                <div class="reveal-card card-pro group" style="transition-delay: 200ms;">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <span class="label-pro">Pillar 01</span>
+                            <h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight">Hardware <br/> Intelligence.</h2>
+                            <p class="text-body leading-relaxed text-lg mb-6">
+                                Every display has a unique **PPI (Pixels Per Inch)** and **DPR (Device Pixel Ratio)**. A standard monitor might have 96 DPI, while a high-resolution Retina display can reach over 400.
+                            </p>
+                            <p class="text-body leading-relaxed text-lg">
+                                When you load our tool, we instantly query your system's reported specifications. For supported devices (MacBooks, iPhones, and Surface Pros), we automatically set the correct physical ratio for out-of-the-box accuracy.
+                            </p>
+                        </div>
+                        <div class="relative aspect-video rounded-3xl overflow-hidden bg-ink/5 dark:bg-canvas-soft border border-hairline flex items-center justify-center">
+                            <div class="absolute inset-0 opacity-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+                            <div class="text-[80px] font-black text-ink/10 dark:text-canvas/10 select-none uppercase tracking-tighter">PPI SENSING</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pillar 02: Physical Anchor -->
+                <div class="reveal-card card-pro group" style="transition-delay: 300ms;">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div class="order-2 lg:order-1 relative aspect-video rounded-3xl overflow-hidden bg-ink/5 dark:bg-canvas-soft border border-hairline flex items-center justify-center">
+                            <div class="absolute inset-0 opacity-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+                            <div class="text-[80px] font-black text-ink/10 dark:text-canvas/10 select-none uppercase tracking-tighter italic">ISO 7810</div>
+                        </div>
+                        <div class="order-1 lg:order-2">
+                            <span class="label-pro">Pillar 02</span>
+                            <h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight">The Physical <br/> Anchor.</h2>
+                            <p class="text-body leading-relaxed text-lg mb-6">
+                                To achieve ±0.1mm precision, we use a "physical constant" to verify the digital scale. Standard credit cards and IDs follow the **ISO/IEC 7810 ID-1** standard (85.60 mm × 53.98 mm).
+                            </p>
+                            <p class="text-body leading-relaxed text-lg">
+                                By placing a card against your screen and matching the digital guides to its edges, you provide our engine with an absolute physical reference point. This eliminates software reporting errors and guarantees a 1:1 real-world scale.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pillar 03: SVG Logic -->
+                <div class="reveal-card card-pro group" style="transition-delay: 400ms;">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <span class="label-pro">Pillar 03</span>
+                            <h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight">The Vector <br/> Engine.</h2>
+                            <p class="text-body leading-relaxed text-lg mb-6">
+                                Unlike static ruler images that blur when zoomed, our rulers are rendered using **high-precision SVG (Scalable Vector Graphics)**.
+                            </p>
+                            <p class="text-body leading-relaxed text-lg">
+                                Our mathematical engine calculates every tick mark in real-time based on your calibration. This ensures that whether you are measuring in Centimeters, Millimeters, or Inches, the lines remain infinitely sharp and perfectly spaced regardless of your browser's zoom level.
+                            </p>
+                        </div>
+                        <div class="relative aspect-video rounded-3xl overflow-hidden bg-ink/5 dark:bg-canvas-soft border border-hairline flex items-center justify-center">
+                            <div class="absolute inset-0 opacity-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+                            <div class="text-[80px] font-black text-ink/10 dark:text-canvas/10 select-none uppercase tracking-tighter">SVG PRECISION</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Final CTA -->
+                <div class="reveal-card text-center py-24 flex flex-col items-center" style="transition-delay: 500ms;">
+                    <h3 class="text-3xl md:text-5xl font-black tracking-tighter mb-12">Ready to measure?</h3>
+                    <div class="flex flex-col sm:flex-row gap-6">
+                        <a href="/measure" class="btn-black">Launch Workspace</a>
+                        <a href="/" class="btn-white">Back to Home</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+	</main>
+</Layout>
+
+<style>
+    .reveal-card {
+        opacity: 0;
+        transform: translateY(60px) scale(0.95);
+        filter: blur(20px);
+        transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: transform, opacity, filter;
+    }
+    .reveal-card.active {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+</style>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('active');
+        });
+    }, { threshold: 0.1 });
+
+    function init() {
+        document.querySelectorAll('.reveal-card').forEach(c => observer.observe(c));
+    }
+
+    document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('astro:after-swap', init);
+</script>

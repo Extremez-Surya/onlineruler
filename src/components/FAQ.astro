@@ -1,0 +1,90 @@
+---
+/**
+ * Accessible FAQ Accordion Component
+ * Professional, Minimalist Design inspired by Vercel
+ */
+import { faqData } from "../lib/faqData";
+---
+
+<section class="max-w-4xl mx-auto px-6 py-24 border-t border-hairline reveal-card">
+    <div class="text-center mb-16">
+        <h2 class="text-4xl font-black tracking-tighter mb-4">Frequently Asked Questions</h2>
+        <p class="text-mute text-lg">Everything you need to know about digital measurement and accuracy.</p>
+    </div>
+
+    <div class="space-y-4">
+        {faqData.map((item, index) => (
+            <div class="faq-item border border-hairline rounded-2xl overflow-hidden bg-canvas-soft/30 hover:border-ink/20 transition-all duration-300">
+                <button 
+                    class="w-full px-8 py-6 flex items-center justify-between text-left group focus:outline-none focus:bg-canvas-soft"
+                    aria-expanded="false"
+                    data-faq-trigger
+                >
+                    <span class="font-bold text-lg tracking-tight pr-8">{item.question}</span>
+                    <span class="shrink-0 w-6 h-6 rounded-full border border-hairline flex items-center justify-center group-hover:border-ink transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="faq-icon transition-transform duration-300"><path d="m6 9 6 6 6-6"/></svg>
+                    </span>
+                </button>
+                <div class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out opacity-0">
+                    <div class="px-8 pb-8 text-body leading-relaxed prose prose-sm prose-neutral dark:prose-invert max-w-none">
+                        <p set:html={item.answer}></p>
+                    </div>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>
+
+<style>
+    .faq-item.active {
+        border-color: var(--color-ink);
+        background-color: var(--color-canvas);
+        box-shadow: 0 20px 40px -20px rgba(0,0,0,0.05);
+    }
+    
+    .faq-item.active .faq-content {
+        max-height: 500px;
+        opacity: 1;
+    }
+
+    .faq-item.active .faq-icon {
+        transform: rotate(180deg);
+    }
+
+    /* Accessibility focus state */
+    button:focus-visible {
+        outline: 2px solid var(--color-ink);
+        outline-offset: -2px;
+    }
+</style>
+
+<script>
+    function setupFAQ() {
+        const triggers = document.querySelectorAll('[data-faq-trigger]');
+        
+        triggers.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const item = trigger.parentElement;
+                const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+                
+                // Toggle current
+                trigger.setAttribute('aria-expanded', (!isExpanded).toString());
+                item?.classList.toggle('active');
+                
+                // Optional: Close others
+                triggers.forEach(other => {
+                    if (other !== trigger) {
+                        other.setAttribute('aria-expanded', 'false');
+                        other.parentElement?.classList.remove('active');
+                    }
+                });
+            });
+        });
+    }
+
+    // Initialize on load
+    setupFAQ();
+    
+    // Re-initialize after Astro view transitions
+    document.addEventListener('astro:after-swap', setupFAQ);
+</script>

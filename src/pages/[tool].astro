@@ -1,0 +1,102 @@
+---
+import ToolLayout from '../layouts/ToolLayout.astro';
+
+export function getStaticPaths() {
+  return [
+    { 
+      params: { tool: 'online-ruler' }, 
+      props: { 
+        title: 'Online Ruler - Accurate Screen Ruler for Any Device',
+        h1: 'Online Ruler',
+        description: 'Use our free online ruler to measure objects on your screen. Supports cm, mm, and inches with actual size accuracy.',
+        unit: 'cm',
+        content: `
+          <h2>The Ultimate Online Ruler Tool</h2>
+          <p>An <strong>online ruler</strong> is more than just a digital image; it's a calibrated measurement tool that brings real-world precision to your screen. Whether you are a student working on a project or a designer verifying dimensions, our virtual ruler is ready when you are.</p>
+          <h3>How accurate is this online ruler?</h3>
+          <p>Accuracy is our top priority. By calibrating against a standard credit card or your screen's physical size, you eliminate the variations caused by different monitor resolutions. This ensures your <strong>online ruler actual size</strong> is always 100% correct.</p>
+        `
+      } 
+    },
+    { 
+      params: { tool: 'actual-size-ruler' }, 
+      props: { 
+        title: 'Actual Size Ruler - Real Life Measurement on Screen',
+        h1: 'Actual Size Ruler',
+        description: 'Need an actual size ruler on your screen? Calibrate our tool to measure physical objects with 100% precision.',
+        unit: 'cm',
+        content: `
+          <h2>Measuring in Actual Size</h2>
+          <p>When we say <strong>actual size ruler</strong>, we mean it. Traditional on-screen rulers often fail because they don't account for pixel density. Our <strong>real online ruler</strong> solves this through an easy calibration process.</p>
+          <h3>Why Actual Size Matters</h3>
+          <p>If you're measuring a bolt, a credit card, or a piece of paper, you need the digital markings to match the physical world. Our <strong>ruler to scale</strong> is the most trusted tool for "to scale" digital measurements.</p>
+        `
+      } 
+    },
+    { 
+      params: { tool: '12-inch-ruler' }, 
+      props: { 
+        title: '12 Inch Online Ruler - Actual Size Imperial Ruler',
+        h1: '12 Inch Online Ruler',
+        description: 'A full 12-inch online ruler in actual size. Measure in inches with fractional precision on your screen.',
+        unit: 'in',
+        content: `
+          <h2>Full 12-Inch Digital Ruler</h2>
+          <p>Looking for a <strong>12 inch online ruler</strong>? Most screens can't show a full foot at once, but our ruler allows you to measure long objects with ease. Calibrate once and measure in inches, halves, quarters, and eighths.</p>
+          <h3>Perfect for US Standard Measurements</h3>
+          <p>The <strong>online ruler 12 inch</strong> is the standard for imperial measurements. Whether you're measuring a standard 8.5x11 sheet of paper or a DIY project, our <strong>inch ruler</strong> has you covered.</p>
+        `
+      } 
+    },
+    { 
+      params: { tool: 'screen-measurement-tool' }, 
+      props: { 
+        title: 'Screen Measurement Tool - Pixels, CM, and Inches',
+        h1: 'Screen Measurement Tool',
+        description: 'The most versatile screen measurement tool for developers and designers. Measure anything on your display.',
+        unit: 'px',
+        content: `
+          <h2>Professional Screen Measurement</h2>
+          <p>Our <strong>screen measurement tool</strong> is built for the modern web. It combines the functionality of a <strong>pixel measurement tool</strong> with a physical <strong>actual size online ruler</strong>.</p>
+          <h3>Digital and Physical Units</h3>
+          <p>Web developers often need to measure in pixels, while product designers need <strong>centimeter ruler</strong> accuracy. This tool provides both in a single, high-performance interface.</p>
+        `
+      } 
+    },
+    { 
+      params: { tool: 'free-online-ruler' }, 
+      props: { 
+        title: 'Free Online Ruler - No Download Measurement Tool',
+        h1: 'Free Online Ruler',
+        description: 'Completely free online ruler. No apps to download, no installation required. Just open and measure.',
+        unit: 'cm',
+        content: `
+          <h2>Always Free, Always Accurate</h2>
+          <p>Need a <strong>free online ruler</strong> right now? You're in the right place. Our tool is web-based, meaning it works on any device with a browser. No need to download bulky apps just to measure a small object.</p>
+          <h3>Privacy Focused</h3>
+          <p>Unlike many "free" tools, we don't track your data. Use our <strong>accurate online ruler</strong> with the peace of mind that your privacy is protected.</p>
+        `
+      } 
+    },
+    { 
+      params: { tool: 'accurate-online-ruler' }, 
+      props: { 
+        title: 'Accurate Online Ruler - Calibrated Precision Ruler',
+        h1: 'Accurate Online Ruler',
+        description: 'The most accurate online ruler available. Calibrate using our wizard for guaranteed precision.',
+        unit: 'mm',
+        content: `
+          <h2>Why Accuracy Is Everything</h2>
+          <p>An <strong>accurate online ruler</strong> is only as good as its calibration. Most websites guess your screen size, but we let you verify it. Our <strong>mm online ruler</strong> is used by professionals who can't afford to be off by even a fraction.</p>
+          <h3>Verified by Users</h3>
+          <p>Thousands of users rely on our <strong>real online ruler</strong> every day for tasks that require absolute precision. Follow our calibration guide to join them.</p>
+        `
+      } 
+    },
+  ];
+}
+
+const { title, h1, description, unit, content } = Astro.props;
+---
+
+<ToolLayout title={title} h1={h1} description={description} unit={unit} content={content} />

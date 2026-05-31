@@ -1,11 +1,83 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import HomepageContent from '../components/HomepageContent.astro';
+import ThreeDBackground from '../components/ThreeDBackground.svelte';
+import FAQ from '../components/FAQ.astro';
+import { faqData } from '../lib/faqData';
 ---
 
-<Layout>
-	<Welcome />
+<Layout faqSchema={faqData}>
+    <ThreeDBackground client:only="svelte" />
+	<main class="relative bg-canvas dark:bg-canvas text-ink dark:text-ink overflow-x-hidden selection:bg-ink selection:text-canvas">
+		
+		<!-- Hero Section -->
+		<div class="relative z-10 flex flex-col items-center justify-center min-h-screen p-6 text-center">
+			
+            <!-- Tech Status Badge -->
+            <div id="hardware-sensing" class="reveal-card inline-flex items-center gap-4 px-4 py-1.5 rounded-full border border-hairline bg-canvas-soft/80 backdrop-blur-xl text-ink text-[10px] font-black uppercase tracking-[0.2em] mb-12 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+				<span class="flex h-2 w-2 relative">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-ink opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-ink"></span>
+                </span>
+				<span id="sensing-text">Sensing Hardware...</span>
+			</div>
+			
+			<h1 class="reveal-card text-pro-display max-w-6xl mb-8 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-100 ease-out">
+				Precision Measurement <br/> <span class="text-mute font-medium">On Your Screen.</span>
+			</h1>
+			
+			<p class="reveal-card text-pro-body max-w-2xl mb-12 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-200 ease-out">
+				The most accurate, professional-grade <strong>online ruler</strong>. Measure objects in <strong>cm</strong>, <strong>inches</strong>, and <strong>mm</strong> with pixel-perfect physical accuracy.
+			</p>
+
+			<div class="flex flex-col sm:flex-row items-center gap-8 w-full sm:w-auto animate-in fade-in slide-in-from-bottom-16 duration-1000 delay-300 ease-out mb-16">
+				<a href="/measure" class="btn-black min-w-[240px]">
+					Start Measuring Now
+				</a>
+				<a href="/how-it-works" class="btn-white min-w-[240px] bg-white/50 backdrop-blur-xl">
+					How Calibration Works
+				</a>
+			</div>
+
+            <!-- Small Secondary Nav -->
+            <div class="flex flex-wrap items-center justify-center gap-x-12 gap-y-6 animate-in fade-in slide-in-from-bottom-20 duration-1000 delay-500 ease-out pb-12">
+                <a href="/about" class="text-[10px] font-black uppercase tracking-[0.4em] text-mute hover:text-ink transition-all">About</a>
+                <a href="/contact" class="text-[10px] font-black uppercase tracking-[0.4em] text-mute hover:text-ink transition-all">Contact</a>
+                <a href="/privacy" class="text-[10px] font-black uppercase tracking-[0.4em] text-mute hover:text-ink transition-all">Privacy</a>
+                <a href="/terms" class="text-[10px] font-black uppercase tracking-[0.4em] text-mute hover:text-ink transition-all">Terms</a>
+            </div>
+		</div>
+
+        <script is:inline>
+            // Real-time Hardware Sensing Data
+            function updateHardwareSensing() {
+                const sensingElement = document.getElementById('sensing-text');
+                if (!sensingElement) return;
+
+                const width = window.screen.width * window.devicePixelRatio;
+                const height = window.screen.height * window.devicePixelRatio;
+                const dpr = window.devicePixelRatio.toFixed(1);
+                
+                // Simple logic to guess device type
+                let device = "External Monitor";
+                if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) device = "iOS Device";
+                else if (/Android/i.test(navigator.userAgent)) device = "Android Device";
+                else if (/Macintosh/i.test(navigator.userAgent)) device = "macOS Workstation";
+
+                sensingElement.textContent = `${device} Detected • ${width}x${height}px • ${dpr}x Scale`;
+            }
+
+            document.addEventListener('DOMContentLoaded', updateHardwareSensing);
+            document.addEventListener('astro:after-swap', updateHardwareSensing);
+        </script>
+
+		<!-- New SEO Content with Magical Reveal -->
+		<HomepageContent />
+
+        <!-- FAQ Section -->
+        <FAQ />
+
+		<!-- Subtle Decorative Elements -->
+		<div class="fixed top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none opacity-[0.03] dark:opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] -z-10"></div>
+	</main>
 </Layout>

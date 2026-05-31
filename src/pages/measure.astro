@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import App from '../components/App.svelte';
+
+const title = "Professional On-Screen Measurement Tool | Real Online Ruler";
+const description = "Access professional-grade measurement tools with edge-to-edge rulers, crosshairs, and pixel-perfect accuracy for any screen.";
+---
+
+<Layout title={title} description={description} showDock={false}>
+	<main class="relative min-h-screen bg-canvas overflow-hidden">
+		<!-- Main Application (Client Side) with sidebar enabled -->
+		<App client:only="svelte" initialUnit="cm" />
+	</main>
+</Layout>

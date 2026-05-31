@@ -1,0 +1,196 @@
+---
+import Layout from '../layouts/Layout.astro';
+import App from '../components/App.svelte';
+import ThreeDBackground from '../components/ThreeDBackground.svelte';
+
+export function getStaticPaths() {
+  return [
+    { 
+      params: { slug: 'online-ruler' }, 
+      props: { 
+        title: 'Online Ruler - Accurate Screen Ruler for Any Device',
+        h1: 'Online Ruler',
+        unit: 'cm',
+        description: 'Use our free online ruler to measure objects on your screen. Supports cm, mm, and inches with actual size accuracy.',
+        content: `
+          <p>An <strong>online ruler</strong> (or screen ruler) is a web-based measurement tool designed to help you measure physical objects directly on your computer, tablet, or smartphone screen.</p>
+          <p>Unlike static images of rulers, a <strong>real online ruler</strong> must be calibrated to your specific device to be accurate. At <strong>onlineruler.com</strong>, we use advanced screen-sensing technology to provide the most precise measurement possible.</p>
+        `
+      } 
+    },
+    { 
+      params: { slug: 'actual-size-ruler' }, 
+      props: { 
+        title: 'Actual Size Ruler - Real Life Measurement on Screen',
+        h1: 'Actual Size Ruler',
+        unit: 'cm',
+        description: 'Need an actual size ruler on your screen? Calibrate our tool to measure physical objects with 100% precision.',
+        content: `
+          <p>When we say <strong>actual size ruler</strong>, we mean it. Traditional on-screen rulers often fail because they don't account for pixel density. Our <strong>real online ruler</strong> solves this through an easy calibration process.</p>
+        `
+      } 
+    },
+    { 
+      params: { slug: 'cm-ruler' }, 
+      props: { 
+        title: 'CM Ruler Online - Accurate Actual Size Centimeter Ruler',
+        h1: 'CM Ruler Online',
+        unit: 'cm',
+        description: 'The most accurate online cm ruler. Measure in centimeters directly on your screen with calibrated precision.',
+        content: `
+          <p>Our <strong>online ruler in cm</strong> is perfect for standard document sizes, craft projects, and everyday measurements. The metric scale is divided into centimeters and millimeters, allowing for sub-millimeter estimation.</p>
+        `
+      } 
+    },
+    { 
+      params: { slug: 'mm-ruler' }, 
+      props: { 
+        title: 'MM Ruler Online - Precision Millimeter Screen Ruler',
+        h1: 'MM Ruler Online',
+        unit: 'mm',
+        description: 'High-precision mm ruler for small object measurement. Calibrate your screen for 1:1 millimeter accuracy.',
+        content: `
+          <p>For industrial and engineering tasks, our <strong>online ruler mm</strong> provides the granular detail you need. Measure small hardware, electronic components, or jewelry with confidence.</p>
+        `
+      } 
+    },
+    { 
+      params: { slug: 'inch-ruler' }, 
+      props: { 
+        title: 'Inch Ruler Online - 12 Inch Actual Size Ruler',
+        h1: 'Inch Ruler Online',
+        unit: 'in',
+        description: 'A full 12-inch online ruler in actual size. Measure in inches with fractional precision on your screen.',
+        content: `
+          <p>The <strong>online ruler inches</strong> mode provides a standard 12-inch scale that mimics a traditional ruler. Perfect for US standard paper sizes and imperial construction tasks.</p>
+        `
+      } 
+    },
+    { 
+      params: { slug: 'pixel-ruler' }, 
+      props: { 
+        title: 'Pixel Ruler - On-Screen Measurement for Designers',
+        h1: 'Pixel Ruler',
+        unit: 'px',
+        description: 'Professional pixel measurement tool for web developers and UI designers. Measure anything on your display.',
+        content: `
+          <p>A <strong>pixel measurement tool</strong> is essential for modern design. Measure CSS widths, margins, and paddings directly on your screen with absolute digital accuracy.</p>
+        `
+      } 
+    },
+    { 
+      params: { slug: 'screen-measurement-tool' }, 
+      props: { 
+        title: 'Screen Measurement Tool - Physical & Digital Scaling',
+        h1: 'Screen Measurement Tool',
+        unit: 'cm',
+        description: 'The most versatile screen measurement tool. Measure in cm, inches, and pixels with professional accuracy.',
+        content: `
+          <p>Our <strong>screen measurement tool</strong> is built for accuracy. By choosing <strong>onlineruler.com</strong>, you are using a professional-grade utility that eliminates the guesswork of digital scaling.</p>
+        `
+      } 
+    },
+    { 
+      params: { slug: 'free-online-ruler' }, 
+      props: { 
+        title: 'Free Online Ruler - Accurate & No Download Required',
+        h1: 'Free Online Ruler',
+        unit: 'cm',
+        description: 'Completely free online ruler. No apps to download. Just open and measure with actual size accuracy.',
+        content: `
+          <p>Need a <strong>free online ruler</strong> right now? You're in the right place. Our tool is 100% web-based and works on any device with a browser.</p>
+        `
+      } 
+    },
+    { 
+      params: { slug: 'accurate-online-ruler' }, 
+      props: { 
+        title: 'Accurate Online Ruler - Calibrated Precision Ruler',
+        h1: 'Accurate Online Ruler',
+        unit: 'cm',
+        description: 'The most accurate online ruler available. Calibrated for 100% real-world precision on any monitor.',
+        content: `
+          <p>An <strong>accurate online ruler</strong> is only as good as its calibration. Our tool ensures your <strong>actual size online ruler</strong> is truly life-sized through easy-to-follow calibration steps.</p>
+        `
+      } 
+    }
+  ];
+}
+
+const { title, h1, description, unit, content } = Astro.props;
+---
+
+<Layout title={title} description={description}>
+    <ThreeDBackground client:only="svelte" />
+	<main class="relative bg-canvas dark:bg-canvas text-ink dark:text-ink selection:bg-ink selection:text-canvas">
+		
+        <div class="max-w-7xl mx-auto px-6 pt-32 pb-12 text-center relative z-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md border border-hairline bg-canvas-soft text-ink dark:text-ink text-[10px] font-bold uppercase tracking-widest mb-8 animate-in fade-in slide-in-from-bottom-4 duration-1000 ease-out">
+				<span class="w-1.5 h-1.5 rounded-full bg-ink dark:bg-ink animate-pulse"></span>
+				Professional Tool
+			</div>
+
+			<h1 class="text-5xl md:text-7xl font-black tracking-tighter leading-tight max-w-5xl mx-auto mb-8 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-100">
+				{h1}<span class="text-mute font-medium">.</span>
+			</h1>
+			
+			<p class="text-lg md:text-2xl text-body max-w-3xl mx-auto mb-16 leading-relaxed animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-200">
+				{description}
+			</p>
+
+            <!-- App Container (Embedded) -->
+            <div class="mb-32 relative reveal-card active">
+                <div class="absolute -inset-4 bg-gradient-to-b from-ink/5 to-transparent blur-3xl -z-10 rounded-[3rem]"></div>
+		        <App client:only="svelte" initialUnit={unit} isEmbedded={true} />
+            </div>
+
+            <div class="flex items-center justify-center gap-6 mb-32 reveal-card active" style="transition-delay: 150ms;">
+				<button class="btn-black shadow-2xl" onclick="window.dispatchEvent(new CustomEvent('open-calibration'))">Calibrate for Accuracy</button>
+                <a href="/how-it-works" class="btn-white">Calibration Guide</a>
+			</div>
+
+            <!-- SEO Content Section -->
+            <section class="max-w-4xl mx-auto text-left py-24 border-t border-hairline reveal-card" style="transition-delay: 200ms;">
+                <h2 class="text-4xl font-black tracking-tighter mb-12">Professional Grade Accuracy</h2>
+                <div class="prose prose-xl prose-neutral dark:prose-invert max-w-none">
+                    <div set:html={content} />
+                    <p class="mt-8">
+                        Whether you are using a mobile phone, a tablet, or a high-resolution desktop monitor, the key to an <strong>accurate online ruler</strong> is matching the software to your hardware. 
+                        By following our <strong>ruler calibration</strong> process, you can ensure that the measurements you see are 100% reliable for professional and personal use.
+                    </p>
+                </div>
+            </section>
+		</div>
+	</main>
+</Layout>
+
+<style>
+    /* Reuse the reveal-card styles locally or move to global if needed */
+    .reveal-card {
+        opacity: 0;
+        transform: translateY(60px);
+        filter: blur(10px);
+        transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-card.active {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+</style>
+
+<script>
+    // Simple intersection observer for the landing page cards
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('active');
+        });
+    }, { threshold: 0.1 });
+
+    function setupReveal() {
+        document.querySelectorAll('.reveal-card').forEach(c => observer.observe(c));
+    }
+
+    document.addEventListener('DOMContentLoaded', setupReveal);
+    document.addEventListener('astro:after-swap', setupReveal);
+</script>

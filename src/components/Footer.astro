@@ -1,0 +1,52 @@
+---
+/**
+ * Footer component
+ */
+---
+
+<footer class="bg-canvas-soft border-t border-hairline py-24 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
+        <div class="max-w-sm">
+            <h2 class="text-xl font-bold mb-6">Real Online Ruler</h2>
+            <p class="text-body text-sm mb-8 leading-relaxed">
+                The most accurate, professional-grade online ruler for designers, engineers, and students. Calibrated for 100% real-world accuracy on any device.
+            </p>
+            <div class="text-[10px] font-bold uppercase tracking-widest text-mute">
+                &copy; {new Date().getFullYear()} Real Online Ruler. All rights reserved.
+            </div>
+        </div>
+
+        <div class="flex flex-wrap gap-8 md:gap-16">
+            <div class="space-y-4">
+                <h3 class="text-xs font-bold uppercase tracking-widest text-mute">Resources</h3>
+                <ul class="space-y-2">
+                    <li><a href="/measure" class="text-sm text-body hover:text-ink transition-colors">Workspace</a></li>
+                    <li><a href="/how-it-works" class="text-sm text-body hover:text-ink transition-colors">How it Works</a></li>
+                    <li><a href="/" class="text-sm text-body hover:text-ink transition-colors">Homepage</a></li>
+                </ul>
+            </div>
+            
+            <div class="space-y-4">
+                <h3 class="text-xs font-bold uppercase tracking-widest text-mute">Company</h3>
+                <ul class="space-y-2">
+                    <li><a href="/about" class="text-sm text-body hover:text-ink transition-colors">About Us</a></li>
+                    <li><a href="/contact" class="text-sm text-body hover:text-ink transition-colors">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-4">
+                <h3 class="text-xs font-bold uppercase tracking-widest text-mute">Legal</h3>
+                <ul class="space-y-2">
+                    <li><a href="/privacy" class="text-sm text-body hover:text-ink transition-colors">Privacy Policy</a></li>
+                    <li><a href="/terms" class="text-sm text-body hover:text-ink transition-colors">Terms & Conditions</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="max-w-6xl mx-auto mt-24 pt-12 border-t border-hairline">
+        <p class="text-[10px] text-mute leading-relaxed max-w-3xl">
+            Disclaimer: Accuracy depends on proper calibration. Ensure you use a standard credit card or your device's correct screen dimensions for best results. Real Online Ruler is a free measurement utility and should be used as a reference tool.
+        </p>
+    </div>
+</footer>

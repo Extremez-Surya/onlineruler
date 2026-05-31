@@ -40,6 +40,15 @@ All commands are run from the root of the project, from a terminal:
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
+| `npm run deploy`          | Build and deploy to Cloudflare Workers           |
+
+## ☁️ Deployment
+
+This project is configured for deployment to **Cloudflare Workers**.
+
+To deploy:
+1. Make sure you are logged into Wrangler: `npx wrangler login`
+2. Run the deploy script: `npm run deploy`
 
 ## 👀 Want to learn more?
 

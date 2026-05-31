@@ -1,0 +1,73 @@
+---
+import Layout from '../layouts/Layout.astro';
+import App from '../components/App.svelte';
+
+export function getStaticPaths() {
+  return [
+    { params: { unit: 'cm' }, props: { unitName: 'Centimeter', symbol: 'cm', description: 'Centimeters are the standard metric unit for everyday measurements. Our online cm ruler is perfect for measuring paper, crafts, and standard objects.' } },
+    { params: { unit: 'mm' }, props: { unitName: 'Millimeter', symbol: 'mm', description: 'Millimeters provide high precision for small objects. Use our mm ruler for hardware, electronics, and precision engineering tasks.' } },
+    { params: { unit: 'inch' }, props: { unitName: 'Inch', symbol: 'in', description: 'Inches are the standard imperial unit. Our 12-inch online ruler provides accurate fractional measurements down to 1/16th of an inch.' } },
+    { params: { unit: 'pixel' }, props: { unitName: 'Pixel', symbol: 'px', description: 'Pixels are the unit of the digital world. Our pixel ruler helps web developers and designers measure screen elements with absolute accuracy.' } },
+  ];
+}
+
+const { unit } = Astro.params;
+const { unitName, symbol, description: unitDescription } = Astro.props;
+
+const title = `Online ${unitName} Ruler | Actual Size ${symbol} Ruler`;
+const description = `The most accurate online ${unitName} ruler. Measure in ${symbol} directly on your screen. Calibrate for any monitor or device.`;
+---
+
+<Layout title={title} description={description} pageType="landing">
+	<main class="relative bg-canvas dark:bg-canvas text-ink dark:text-ink selection:bg-ink selection:text-canvas">
+		
+        <div class="max-w-7xl mx-auto px-6 pt-24 pb-12 text-center">
+			<h1 class="text-4xl md:text-7xl font-extrabold tracking-tighter leading-tight max-w-4xl mx-auto mb-6">
+				Actual Size <span class="text-mute font-normal">{unitName} Ruler</span>.
+			</h1>
+			
+			<p class="text-lg md:text-xl text-body max-w-2xl mx-auto mb-12 leading-relaxed">
+				A precision on-screen ruler calibrated for your device. Measure exactly in <strong>{unitName}s</strong> with zero margin of error.
+			</p>
+
+            <!-- App Container -->
+            <div class="mb-24">
+		        <App client:only="svelte" initialUnit={symbol} isEmbedded={true} />
+            </div>
+
+            <div class="flex items-center justify-center gap-4 mb-24">
+				<button class="btn-black" onclick="window.dispatchEvent(new CustomEvent('open-calibration'))">Calibrate for Accuracy</button>
+			</div>
+
+            <!-- SEO Content Section -->
+            <section class="max-w-4xl mx-auto text-left prose prose-neutral dark:prose-invert py-16 border-t border-hairline">
+                <h2>Why Use an Online {unitName} Ruler?</h2>
+                <p>
+                    Our <strong>online {unitName} ruler</strong> is designed to provide real-world accuracy on any digital display. 
+                    {unitDescription}
+                </p>
+                <p>
+                    Whether you are using a mobile phone, a tablet, or a desktop monitor, the key to an <strong>accurate online ruler</strong> is calibration. 
+                    Without calibration, the physical size of the ruler depends on your screen's pixel density (PPI). 
+                    By using our calibration tool, you can ensure that 1 {symbol} on your screen is exactly 1 {symbol} in the real world.
+                </p>
+
+                <h3>Features of the {unitName} Ruler</h3>
+                <ul>
+                    <li><strong>Actual Size:</strong> Once calibrated, the ruler matches physical dimensions exactly.</li>
+                    <li><strong>Zero Distortion:</strong> High-precision SVG rendering ensures marks are crisp and perfectly spaced.</li>
+                    <li><strong>Cross-Platform:</strong> Works on Windows, macOS, Linux, iOS, and Android.</li>
+                    <li><strong>Free to Use:</strong> No downloads or installations required.</li>
+                </ul>
+
+                <h3>How to measure in {unitName}s</h3>
+                <p>
+                    1. Calibrate your screen using a credit card or by entering your screen size.<br/>
+                    2. Select the <strong>{unitName}</strong> unit from the settings.<br/>
+                    3. Place the object you want to measure against the screen.<br/>
+                    4. Read the measurement directly from the digital scale.
+                </p>
+            </section>
+		</div>
+	</main>
+</Layout>

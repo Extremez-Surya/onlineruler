@@ -1,0 +1,17 @@
+{
+  "name": "Real Online Ruler",
+  "short_name": "Ruler",
+  "description": "The most accurate on-screen measurement tool.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#171717",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

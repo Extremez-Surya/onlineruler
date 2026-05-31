@@ -1,0 +1,220 @@
+---
+/**
+ * Redesigned Homepage Content Component with "Magical" Scroll Reveal Animations
+ * Optimized for clarity, data authority, and Google-Pro aesthetics.
+ */
+---
+
+<section class="max-w-6xl mx-auto px-6 py-24 relative">
+    <!-- Animated Measuring Line Graphics -->
+    <div class="absolute top-0 left-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
+        <div class="measuring-line line-1"></div>
+        <div class="measuring-line line-2"></div>
+        <div class="measuring-line line-3"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 items-start relative z-10">
+        
+        <!-- Left Column: Primary Explanations -->
+        <div class="space-y-16">
+            <div class="reveal-card">
+                <span class="label-pro">Definition</span>
+                <h2 class="text-4xl md:text-5xl font-black tracking-tighter mb-8">The Professional <br/> <span class="text-mute font-medium">Digital Standard.</span></h2>
+                <p class="text-body leading-relaxed text-lg">
+                    An <strong>online ruler</strong> is a precision measurement instrument engineered for digital displays. Unlike a static image, our tool dynamically calculates your hardware's unique pixel geometry to provide a 1:1 physical ratio.
+                </p>
+                <div class="mt-8 p-6 rounded-3xl bg-canvas-soft border border-hairline flex items-center gap-6 group hover:border-ink/20 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-ink flex items-center justify-center shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07l14.14-14.14"/></svg>
+                    </div>
+                    <div>
+                        <h4 class="font-black text-xs uppercase tracking-widest">Pixel-Physical Bridge</h4>
+                        <p class="text-[10px] text-mute mt-1 leading-relaxed">Converts absolute screen coordinates into ISO-standard real-world units.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal-card" style="transition-delay: 100ms;">
+                <span class="label-pro">Use Cases</span>
+                <h2 class="text-3xl font-black tracking-tighter mb-8">Professional Utility.</h2>
+                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <li class="space-y-2 group">
+                        <div class="w-2 h-2 rounded-full bg-ink group-hover:scale-150 transition-transform"></div>
+                        <h5 class="font-bold text-sm">Industrial Design</h5>
+                        <p class="text-xs text-mute leading-relaxed">Verifying small hardware components and fastener dimensions.</p>
+                    </li>
+                    <li class="space-y-2 group">
+                        <div class="w-2 h-2 rounded-full bg-ink group-hover:scale-150 transition-transform"></div>
+                        <h5 class="font-bold text-sm">Digital Craft</h5>
+                        <p class="text-xs text-mute leading-relaxed">Visualizing physical print assets at 1:1 scale before production.</p>
+                    </li>
+                    <li class="space-y-2 group">
+                        <div class="w-2 h-2 rounded-full bg-ink group-hover:scale-150 transition-transform"></div>
+                        <h5 class="font-bold text-sm">Tech Support</h5>
+                        <p class="text-xs text-mute leading-relaxed">Helping users identify standard battery, card, or paper sizes.</p>
+                    </li>
+                    <li class="space-y-2 group">
+                        <div class="w-2 h-2 rounded-full bg-ink group-hover:scale-150 transition-transform"></div>
+                        <h5 class="font-bold text-sm">UI Development</h5>
+                        <p class="text-xs text-mute leading-relaxed">Measuring on-screen elements for pixel-perfect frontend layouts.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Right Column: Data & Comparison -->
+        <div class="space-y-16">
+            <div class="reveal-card glass-card p-10 md:p-12 rounded-[3rem] border border-hairline bg-canvas/30 backdrop-blur-3xl shadow-2xl" style="transition-delay: 200ms;">
+                <span class="label-pro">Technical Comparison</span>
+                <h2 class="text-3xl font-black tracking-tighter mb-8">Digital vs. Physical.</h2>
+                <div class="space-y-6">
+                    <div class="flex justify-between items-end pb-4 border-b border-hairline">
+                        <span class="text-xs font-bold text-mute uppercase tracking-widest">Precision</span>
+                        <span class="text-sm font-black">± 0.1mm (Calibrated)</span>
+                    </div>
+                    <div class="flex justify-between items-end pb-4 border-b border-hairline">
+                        <span class="text-xs font-bold text-mute uppercase tracking-widest">Flexibility</span>
+                        <span class="text-sm font-black text-right">Infinite (Edge-to-Edge)</span>
+                    </div>
+                    <div class="flex justify-between items-end pb-4 border-b border-hairline">
+                        <span class="text-xs font-bold text-mute uppercase tracking-widest">Durability</span>
+                        <span class="text-sm font-black">100% (No Wear/Tear)</span>
+                    </div>
+                    <div class="flex justify-between items-end pb-4 border-b border-hairline">
+                        <span class="text-xs font-bold text-mute uppercase tracking-widest">Access</span>
+                        <span class="text-sm font-black">Global (Web-Based)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal-card" style="transition-delay: 300ms;">
+                <span class="label-pro">Calibration Hierarchy</span>
+                <div class="space-y-4">
+                    <div class="p-6 rounded-2xl border border-hairline hover:border-ink transition-all group">
+                        <h4 class="font-black text-xs uppercase tracking-widest mb-2 group-hover:text-ink">Step 01. Physical Anchor</h4>
+                        <p class="text-xs text-body leading-relaxed">Place an ISO-standard card (85.6mm) against your display for absolute 1:1 scaling.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl border border-hairline hover:border-ink transition-all group">
+                        <h4 class="font-black text-xs uppercase tracking-widest mb-2 group-hover:text-ink">Step 02. Engine Sync</h4>
+                        <p class="text-xs text-body leading-relaxed">Our vector engine calculates the physical PPI and locks the SVG scale to your hardware.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl border border-hairline hover:border-ink transition-all group">
+                        <h4 class="font-black text-xs uppercase tracking-widest mb-2 group-hover:text-ink">Step 03. Verification</h4>
+                        <p class="text-xs text-body leading-relaxed">Instantly toggle between CM, MM, Inches, and Pixels with verified actual-size accuracy.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Summary Section -->
+    <div class="mt-32 pt-32 border-t border-hairline reveal-card">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div class="flex flex-col gap-6">
+                <div class="text-4xl font-black italic">25.4mm</div>
+                <p class="text-sm text-body leading-relaxed">The global standard for one international inch. Our system uses high-precision floating point math for all unit conversions.</p>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div class="text-4xl font-black italic">0.1px</div>
+                <p class="text-sm text-body leading-relaxed">The sub-pixel precision our SVG engine maintains when rendering ruler marks, ensuring zero visual distortion.</p>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div class="text-4xl font-black italic">1:1 Scale</div>
+                <p class="text-sm text-body leading-relaxed">Verified actual size measurement. Once calibrated, 1cm on your screen is 1cm in the real world.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Magical Reveal Animation */
+    .reveal-card {
+        opacity: 0;
+        transform: translateY(100px) scale(0.9) rotateX(15deg);
+        filter: blur(20px);
+        transition: 
+            opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1),
+            transform 1.5s cubic-bezier(0.16, 1, 0.3, 1),
+            filter 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: transform, opacity, filter;
+        perspective: 2000px;
+        transform-origin: center bottom;
+    }
+
+    .reveal-card.active {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotateX(0deg);
+        filter: blur(0);
+    }
+
+    /* Glassmorphism Refinement */
+    .glass-card {
+        background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+        backdrop-filter: blur(40px);
+        box-shadow: 0 40px 100px -20px rgba(0,0,0,0.05);
+    }
+
+    /* Cinematic Measuring Lines */
+    .measuring-line {
+        position: absolute;
+        background: linear-gradient(to right, transparent, var(--color-ink), transparent);
+        height: 1px;
+        width: 100%;
+        opacity: 0.1;
+        animation: slide-x 10s infinite linear;
+    }
+
+    .line-1 { top: 20%; animation-duration: 15s; }
+    .line-2 { top: 50%; animation-duration: 20s; animation-direction: reverse; }
+    .line-3 { top: 80%; animation-duration: 25s; }
+
+    @keyframes slide-x {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+    }
+
+    /* Hover effects for interactive elements within cards */
+    .reveal-card .grid > a:hover,
+    .reveal-card .grid > div:hover,
+    .reveal-card .space-y-4 > div:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 40px -20px rgba(0,0,0,0.1);
+        border-color: var(--color-ink);
+    }
+
+    .reveal-card .grid > a,
+    .reveal-card .grid > div,
+    .reveal-card .space-y-4 > div {
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+</style>
+
+<script>
+    // Intersection Observer to trigger the "magic" reveal
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            } else {
+                entry.target.classList.remove('active');
+            }
+        });
+    }, observerOptions);
+
+    function setupReveal() {
+        const cards = document.querySelectorAll('.reveal-card');
+        cards.forEach(card => observer.observe(card));
+    }
+
+    // Initial check and setup
+    document.addEventListener('DOMContentLoaded', setupReveal);
+
+    // Handle Astro view transitions if enabled
+    document.addEventListener('astro:after-swap', setupReveal);
+</script>

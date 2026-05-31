@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ThreeDBackground from '../components/ThreeDBackground.svelte';
+
+const title = "404 - Page Not Found | Online Ruler";
+const description = "The page you are looking for does not exist. Return to the Online Ruler to measure your screen.";
+---
+
+<Layout title={title} description={description} showDock={false}>
+    <ThreeDBackground client:only="svelte" />
+    <main class="relative bg-canvas dark:bg-canvas text-ink dark:text-ink overflow-x-hidden selection:bg-ink selection:text-canvas">
+        
+        <!-- Error Section -->
+        <div class="relative z-10 flex flex-col items-center justify-center min-h-screen p-6 text-center">
+            
+            <!-- Error Code Badge -->
+            <div class="reveal-card inline-flex items-center gap-4 px-4 py-1.5 rounded-full border border-hairline bg-canvas-soft/80 backdrop-blur-xl text-ink text-[10px] font-black uppercase tracking-[0.2em] mb-12 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+                <span class="flex h-2 w-2 relative">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-ink opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-ink"></span>
+                </span>
+                <span>Error 404</span>
+            </div>
+            
+            <h1 class="reveal-card text-pro-display max-w-6xl mb-12 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-100 ease-out">
+                Lost in <br/> <span class="text-mute font-medium">Digital Space.</span>
+            </h1>
+            
+            <p class="reveal-card text-pro-body max-w-2xl mb-16 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-200 ease-out">
+                The page you're looking for has vanished or never existed. Let's get you back to the right path.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center gap-8 w-full sm:w-auto animate-in fade-in slide-in-from-bottom-16 duration-1000 delay-300 ease-out mb-24">
+                <a href="/" class="btn-black min-w-[240px]">
+                    Return Home
+                </a>
+                <a href="/measure" class="btn-white min-w-[240px] bg-white/50 backdrop-blur-xl">
+                    Go to Ruler
+                </a>
+            </div>
+
+            <!-- Small Secondary Nav -->
+            <div class="flex flex-wrap items-center justify-center gap-x-12 gap-y-6 animate-in fade-in slide-in-from-bottom-20 duration-1000 delay-500 ease-out pb-12">
+                <a href="/about" class="text-[10px] font-black uppercase tracking-[0.4em] text-mute hover:text-ink transition-all">About</a>
+                <a href="/contact" class="text-[10px] font-black uppercase tracking-[0.4em] text-mute hover:text-ink transition-all">Contact</a>
+                <a href="/privacy" class="text-[10px] font-black uppercase tracking-[0.4em] text-mute hover:text-ink transition-all">Privacy</a>
+                <a href="/terms" class="text-[10px] font-black uppercase tracking-[0.4em] text-mute hover:text-ink transition-all">Terms</a>
+            </div>
+        </div>
+
+        <!-- Subtle Decorative Elements -->
+        <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none opacity-[0.03] dark:opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] -z-10"></div>
+    </main>
+</Layout>

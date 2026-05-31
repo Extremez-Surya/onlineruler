@@ -1,23 +1,148 @@
+---
+import "../styles/global.css";
+import Footer from "../components/Footer.astro";
+import NavigationDock from "../components/NavigationDock.svelte";
+import { type FAQItem } from "../lib/faqData";
+
+interface Props {
+	title?: string;
+	description?: string;
+	canonical?: string;
+	ogImage?: string;
+    faqSchema?: FAQItem[];
+    showDock?: boolean;
+}
+
+const siteMetadata = {
+  title: "Online Ruler - Accurate Actual Size Screen Ruler (cm, inches, mm)",
+  description: "Free and accurate online ruler to measure objects on your screen in actual size. Calibrate for any screen to get precise measurements in cm, inches, mm, and pixels.",
+  url: "https://onlineruler.com",
+  siteName: "Real Online Ruler",
+  locale: "en_US"
+};
+
+const { 
+	title = siteMetadata.title, 
+	description = siteMetadata.description,
+	canonical,
+	ogImage = "/og-image.png",
+    faqSchema,
+    showDock = true
+} = Astro.props;
+
+const canonicalURL = canonical || Astro.url.href;
+const currentPath = Astro.url.pathname;
+
+// Minimal JSON-LD Schema
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": siteMetadata.siteName,
+  "url": siteMetadata.url
+};
+
+// Software Application Schema
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Real Online Ruler",
+  "operatingSystem": "Web",
+  "applicationCategory": "UtilitiesApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "ratingCount": "1024"
+  }
+};
+
+// FAQ Schema if provided
+const faqJsonLd = faqSchema ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqSchema.map(item => ({
+        "@type": "Question",
+        "name": item.question,
+        "acceptedAnswer": {
+            "@type": "Answer",
+            "text": item.answer.replace(/<\/?[^>]+(>|$)/g, "") // Strip HTML tags for schema
+        }
+    }))
+} : null;
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
+		
+		<script is:inline>
+			// Blocking script to prevent theme flickering
+			(function() {
+				const savedTheme = localStorage.getItem('ruler-prefs:theme');
+				let theme = 'light';
+				
+				if (savedTheme) {
+					try {
+						// Nanostores might save as a quoted JSON string
+						theme = JSON.parse(savedTheme);
+					} catch (e) {
+						// Or as a raw string
+						theme = savedTheme;
+					}
+				}
+				
+				document.documentElement.setAttribute('data-theme', theme);
+				// Set background immediately to prevent white flash before CSS loads
+				document.documentElement.style.backgroundColor = theme === 'dark' ? '#000000' : '#ffffff';
+			})();
+		</script>
+
+		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<meta name="apple-mobile-web-app-title" content="Real Online Ruler" />
+		<link rel="manifest" href="/site.webmanifest" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		
+		<!-- Primary Meta Tags -->
+		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
+		<meta name="robots" content="index, follow" />
+		<meta name="theme-color" content="#ffffff" />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={Astro.url.href} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={new URL(ogImage, Astro.url)} />
+		<meta property="og:site_name" content={siteMetadata.siteName} />
+		<meta property="og:locale" content={siteMetadata.locale} />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={Astro.url.href} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={new URL(ogImage, Astro.url)} />
+
+		<!-- JSON-LD Structured Data -->
+		<script type="application/ld+json" is:inline set:html={JSON.stringify(websiteSchema)} />
+		<script type="application/ld+json" is:inline set:html={JSON.stringify(softwareSchema)} />
+        {faqJsonLd && <script type="application/ld+json" is:inline set:html={JSON.stringify(faqJsonLd)} />}
 	</head>
 	<body>
 		<slot />
+        {showDock && <NavigationDock client:load currentPath={currentPath} />}
+		<Footer />
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

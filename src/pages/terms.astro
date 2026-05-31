@@ -1,0 +1,94 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ThreeDBackground from '../components/ThreeDBackground.svelte';
+---
+
+<Layout 
+	title="Terms of Service | Legal Usage & Measurement Standards"
+	description="Review the professional terms of service for Real Online Ruler. Understanding calibration accuracy and permitted digital use.">
+    <ThreeDBackground client:only="svelte" />
+	<main class="relative min-h-screen bg-canvas dark:bg-canvas text-ink dark:text-ink selection:bg-ink selection:text-canvas overflow-hidden">
+		
+        <header class="max-w-7xl mx-auto px-6 pt-32 pb-24 relative z-10">
+			<a href="/" class="reveal-card inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.3em] text-mute hover:text-ink transition-all mb-16">
+				<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+				Back to Workspace
+			</a>
+
+			<h1 class="reveal-card text-pro-display mb-12">
+                Terms of <br/> <span class="text-mute font-medium italic">Service.</span>
+            </h1>
+            
+            <p class="reveal-card text-pro-body mb-24" style="transition-delay: 100ms;">
+                By using <strong>Real Online Ruler</strong>, you agree to a standard of measurement excellence and responsible digital tool usage.
+            </p>
+        </header>
+
+        <section class="max-w-7xl mx-auto px-6 pb-48 relative z-10">
+            <div class="grid grid-cols-1 gap-8 md:gap-12">
+                
+                <div class="reveal-card card-pro" style="transition-delay: 200ms;">
+                    <span class="label-pro">Standard 01</span>
+                    <h2 class="text-3xl font-black mb-8 leading-tight">Calibration Responsibility.</h2>
+                    <p class="text-body leading-relaxed text-lg">
+                        The accuracy of <strong>onlineruler.com</strong> is directly dependent on user calibration. While our software provides the most advanced sensing available, the user is responsible for performing a <strong>physical verification</strong> (e.g., using a credit card) before relying on measurements for professional work.
+                    </p>
+                </div>
+
+                <div class="reveal-card card-pro" style="transition-delay: 300ms;">
+                    <span class="label-pro">Standard 02</span>
+                    <h2 class="text-3xl font-black mb-8 leading-tight">Professional Use Case.</h2>
+                    <p class="text-body leading-relaxed text-lg">
+                        Real Online Ruler is provided as a professional-grade reference tool. It should not be used as the primary instrument for life-critical medical, high-stakes structural engineering, or aerospace applications where certified physical instrumentation is required by law.
+                    </p>
+                </div>
+
+                <div class="reveal-card card-pro" style="transition-delay: 400ms;">
+                    <span class="label-pro">Standard 03</span>
+                    <h2 class="text-3xl font-black mb-8 leading-tight">Intellectual Property.</h2>
+                    <p class="text-body leading-relaxed text-lg">
+                        The "Ruler Engine," including the mathematical scaling logic and cinematic interface, is the property of Real Online Ruler. Automated scraping, reverse-engineering of the Svelte 5 logic, or unpermitted mirroring of the tool is strictly prohibited.
+                    </p>
+                </div>
+
+                <div class="reveal-card card-pro" style="transition-delay: 500ms;">
+                    <span class="label-pro">Standard 04</span>
+                    <h2 class="text-3xl font-black mb-8 leading-tight">Modifications.</h2>
+                    <p class="text-body leading-relaxed text-lg">
+                        We reserve the right to update our precision algorithms and interface at any time to maintain our position as the world's most accurate digital ruler. Continued use of the site constitutes agreement to the most current version of these standards.
+                    </p>
+                </div>
+            </div>
+        </section>
+	</main>
+</Layout>
+
+<style>
+    .reveal-card {
+        opacity: 0;
+        transform: translateY(60px) scale(0.95);
+        filter: blur(20px);
+        transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: transform, opacity, filter;
+    }
+    .reveal-card.active {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+</style>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('active');
+        });
+    }, { threshold: 0.1 });
+
+    function init() {
+        document.querySelectorAll('.reveal-card').forEach(c => observer.observe(c));
+    }
+
+    document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('astro:after-swap', init);
+</script>
