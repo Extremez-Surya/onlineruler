@@ -14,7 +14,10 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
-  adapter: cloudflare({
+  // Only use the Cloudflare adapter when not building on Vercel.
+  // Vercel's build environment lacks GLIBC 2.35+, which is required by Cloudflare's workerd runtime.
+  adapter: process.env.VERCEL ? undefined : cloudflare({
     prerenderEnvironment: 'node',
+    imageService: 'compile',
   }),
 });
